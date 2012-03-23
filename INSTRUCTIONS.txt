@@ -1,4 +1,5 @@
-Instructions for translating "Què votes quan votes?" Pirate TV AD
+Instructions for translating "Què votes quan votes?" Pirate TV Commercial
+github: https://github.com/chaosct/Qu--votes-quan-votes-pack
 (cc) Carles F. Julià @chaosct
 see LICENSE
 
