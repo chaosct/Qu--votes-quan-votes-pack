@@ -1,0 +1,139 @@
+Instructions for translating "Què votes quan votes?" Pirate TV AD
+(cc) Carles F. Julià @chaosct
+see LICENSE
+
+Hi dear Pirate!
+
+So you want to translate this AD (http://vimeo.com/30923546)?
+I'll show you how:
+
+What do these instructions cover?
+---------------------------------
+
+I'll explain:
+- how to replace the text in the AD,
+- how to correct the camera focus to match the new text,
+- how to adjust the transitions to match the voice,
+- how to render the video and how to put it all toghether.
+
+I won't explain:
+- how to record the voice
+- how to mix and get all the voice right
+- how to use the programs
+
+REQUIREMENTS
+------------
+
+I've tested this in Linux, basically in Ubuntu, but it should work
+using mostly any OS.
+
+You will need:
+- Inkscape
+- Sozi
+- phantom.js
+- openshot
+- font: "URW Gothic L" (probably in Ubuntu by default)
+
+PROCESS
+--------
+The easiest way to do this (in my opinion) is to start with the text translation, then voice recording (and trim it to get the desired lenght), then defining the transition times, rendering and finally mixing video and audio.
+
+translating -> voice -> animation -> rendering -> mixing
+
+TRANSLATING THE AD:
+--------------------
+
+Open the SVG file and modify the text as you wish, make it look cool :)
+
+All the text is in the layer called "text"
+
+Dump of the original strings and its (bad) translation into english:
+(text in [] are in voice but not in text)
+
+"Què votes quan votes?"->"What are you actually voting when voting?"
+"A les eleccions votes a un partit" -> "In elections you vote for a party"
+"Aquest partit té un programa" -> "This party has a program"
+"El programa està format per nombroses propostes. Algunes les comparteixes, d'altres no." -> "The program consists of numerous proposals. Some of which you share, others do not."
+"No seria fantàstic que hi hagués un partit que representés tot allò que t'importa?" -> "Wouldn't it be fantastic if there was a party that represented everything you care about?" 
+"Aquest partit existeix" -> "This party exists" 
+"Drets humans, llibertats digitals, transparència, cultura, Internet..." -> "Human rights, freedoms, digital transparency, culture, Internet ..."
+"...i la resta?" -> "...and everything else?"
+"[La resta] DEMOCRÀCIA DIRECTA" -> "Everything else by DIRECT DEMOCRACY" <- Here you can switch to whatever concept is more popular in your party (direct democracy, liquid democracy)
+"Això vol dir que els ciutadans decideixin!" -> "This means that people decide!"
+"( per Internet :D )" -> "(through the Internet :D)"
+"[Aleshores,] què votes quan votes?" -> "So, what are you actually voting when voting?"
+"Si votes a [Pirates de Catalunya] et votes a tu mateix." -> "If you are voting for [Pirates of Catalonia] you are actually voting for yourself"
+
+When done translating adjust the squares from the layer called "presentation" so they cover the frame to be shown in the animation. Think of them as the key frames for the camera. BE CAREFUL NOT TO CHANGE THEIR ASPECT RATIO.
+
+RECORDING THE VOICE
+-------------------
+
+Record the voice and adjust it with your preferred audio editor program. Then write down the starting timestamp of every sentence.
+
+ADJUSTING THE ANIMATION DURATION
+---------------------------------
+
+This is how time is shared between the steps of the animation:
+
+timeout 1st scene | animation 1->2 | timeout 2nd scene | animation 2->3 ...
+
+I recommend leaving the value of 1 second for transition, for simplicity and because it just feels right.
+Use the noted timestamps to calculate the timeout values for each scene. Take into account the 1 second delay between scenes. Don't be perfectionist, you can correct mistakes when editing the video.
+
+To change these times go to Extensions->Sozi
+
+Do not yse timeout in the last step, this way it won't restart the animation.
+
+PREPARING THE SVG FOR TESTING AND RENDERING
+--------------------------------------------
+
+SAVE YOUR SVG FILE! You are good? Save it as another file name, like video_pirates_paths.svg. Make sure that you are now editing the new file, because we are going to lose the ability of changing text. If you are sure proceed.
+
+Select everything from layer "text" and make it path (Path->Object to Path). You can save now.
+
+TESTING
+-------
+
+Open Firefox or Chromium/Chrome and drop the new SVG file you created (video_pirates_paths.svg). You can see if it is working as you expected, if the timings are OK. If not, correct the original SVG file and repeat the conversion into paths.
+
+RENDERING
+---------
+
+Everything OK so far? You are ready to render the video.
+
+To do this you need the tool I created called "soziframes.js".
+Open a terminal and execute the program using phantomjs:
+
+$ phantomjs soziframes.js SVG_URL duration
+
+Where SVG_URL has the form of "file:///home/user/ideo_pirates_paths.svg" and duration is the total duration of the animation in milliseconds.
+
+You should see that the program generates a series of png files being the frames of the animation.
+
+If you are having problems with this step, ask for help to your nearest Linux hobbist.
+
+MIXING
+------
+
+Open Openshot video editor, and create a new project (25fps 16:9). Import the generated images (File->Import an image sequence) and the recorded audio. You can now mix the video and audio, cutting the video if needed.
+
+Export the video in a web friendly format.
+
+You are finally done!
+
+LICENSING
+--------
+
+Please remember to keep it Creative Commons ( CC BY-NC-SA ) so other Pirates can profit from your work!
+This work , the instructions, the SVG file and soziframes (cc) by Carles F. Julià ( CC BY-NC-SA )
+You can attribute me by placing a link to the original vimeo video (http://vimeo.com/30923546)
+
+CONTACT
+-------
+I would like to hear from you if you translate th AD!
+If you are having trouble, or contact me for anything else: chaosct AT gmail DOT com
+
+
+
+
